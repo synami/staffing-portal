@@ -7,6 +7,7 @@ import { UsersModule } from './modules/users/users.module';
 import { MongooseModule, MongooseModuleOptions } from '@nestjs/mongoose';
 import { MongoConfigModule, MongoConfigService } from './core/config/mongo';
 import { AppConfigModule } from './core/config/app';
+import { AuthModule } from './core/auth/auth.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { AppConfigModule } from './core/config/app';
       introspection: true,
     }),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

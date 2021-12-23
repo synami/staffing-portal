@@ -10,10 +10,7 @@ export class CreateUserInput {
   @Field(() => String, { nullable: false })
   password: string;
 
-  @Field(() => UserRoleEnum, {
-    nullable: false,
-    defaultValue: [UserRoleEnum.USER],
-  })
+  @Field(() => UserRoleEnum)
   @IsEnum(UserRoleEnum)
   @IsDefined()
   roles: UserRoleEnum[];

@@ -4,8 +4,8 @@ import { Document, Types } from 'mongoose';
 import { IsEnum } from 'class-validator';
 
 export enum UserRoleEnum {
-  ADMIN = 0,
-  USER = 1,
+  ADMIN,
+  USER,
 }
 
 registerEnumType(UserRoleEnum, {
