@@ -1,6 +1,6 @@
 import { InputType, Field } from '@nestjs/graphql';
 import { IsDefined, IsEnum } from 'class-validator';
-import { UserRole } from '../entities/user.entity';
+import { UserRoleEnum } from '../entities/user.entity';
 
 @InputType()
 export class CreateUserInput {
@@ -10,8 +10,11 @@ export class CreateUserInput {
   @Field(() => String, { nullable: false })
   password: string;
 
-  @Field(() => UserRole, { nullable: false, defaultValue: [UserRole.USER] })
-  @IsEnum(UserRole)
+  @Field(() => UserRoleEnum, {
+    nullable: false,
+    defaultValue: [UserRoleEnum.USER],
+  })
+  @IsEnum(UserRoleEnum)
   @IsDefined()
-  roles: UserRole[];
+  roles: UserRoleEnum[];
 }

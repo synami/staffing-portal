@@ -1,16 +1,18 @@
 import { ObjectType, Field, registerEnumType } from '@nestjs/graphql';
-import { Prop, Schema } from '@nestjs/mongoose';
-import { Types } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document, Types } from 'mongoose';
 import { IsEnum } from 'class-validator';
 
-export enum UserRole {
+export enum UserRoleEnum {
   ADMIN = 0,
   USER = 1,
 }
 
-registerEnumType(UserRole, {
-  name: 'UserRole',
+registerEnumType(UserRoleEnum, {
+  name: 'UserRoleEnum',
 });
+
+export type UserDocument = Document & User;
 
 @Schema()
 @ObjectType()
@@ -26,10 +28,10 @@ export class User {
   @Prop({ unique: true })
   password: string;
 
-  @Field(() => UserRole, { nullable: false, defaultValue: [UserRole.USER] })
-  @Prop({ default: [UserRole.USER] })
-  @IsEnum(UserRole)
-  roles: UserRole[];
+  @Field(() => UserRoleEnum, { nullable: false, defaultValue: [UserRoleEnum.USER] })
+  @Prop({ default: [UserRoleEnum.USER] })
+  @IsEnum(UserRoleEnum)
+  roles: UserRoleEnum[];
 
   @Field({ defaultValue: Date.now() })
   @Prop({ default: Date.now() })
@@ -39,3 +41,5 @@ export class User {
   @Prop()
   updateDateUTC: Date;
 }
+
+export const UserSchema = SchemaFactory.createForClass(User);
