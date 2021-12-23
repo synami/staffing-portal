@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { LoginInput } from './dto/login.input';
-import { UpdateAuthInput } from './dto/update-auth.input';
 
 @Injectable()
 export class AuthService {
@@ -14,10 +13,6 @@ export class AuthService {
 
   findOne(id: number) {
     return `This action returns a #${id} auth`;
-  }
-
-  update(id: number, updateAuthInput: UpdateAuthInput) {
-    return `This action updates a #${id} auth`;
   }
 
   remove(id: number) {

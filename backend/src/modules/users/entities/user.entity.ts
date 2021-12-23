@@ -28,10 +28,13 @@ export class User {
   @Prop({ unique: true })
   password: string;
 
-  @Field(() => UserRoleEnum, { nullable: false, defaultValue: [UserRoleEnum.USER] })
+  @Field(() => UserRoleEnum, {
+    nullable: true,
+    defaultValue: [UserRoleEnum.USER],
+  })
   @Prop({ default: [UserRoleEnum.USER] })
   @IsEnum(UserRoleEnum)
-  roles: UserRoleEnum[];
+  roles?: UserRoleEnum[];
 
   @Field({ defaultValue: Date.now() })
   @Prop({ default: Date.now() })

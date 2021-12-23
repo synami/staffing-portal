@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
-import {Types} from "mongoose";
+import { Types } from 'mongoose';
 
 @Injectable()
 export class UsersService {

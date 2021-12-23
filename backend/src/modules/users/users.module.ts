@@ -27,5 +27,6 @@ import * as bcrypt from 'bcryptjs';
     ]),
   ],
   providers: [UsersResolver, UsersService],
+  exports: [UsersService],
 })
 export class UsersModule {}
